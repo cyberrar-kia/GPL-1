@@ -519,7 +519,7 @@ body::before{
     <div class="success-icon">✓</div>
     <h2>Your guide is ready.</h2>
     <p>Thank you — click below to download your free GLP-1 pamphlet instantly.</p>
-    <a href="YOUR_PDF_DOWNLOAD_URL_HERE" class="btn-download" download="GLP1_Explained_HormoneAndHer.pdf">
+    <a href="https://raw.githubusercontent.com/cyberrar-kia/GPL-1/main/glp1_pamphlet_hormoneandher.pdf" class="btn-download" download="GLP1_Explained_HormoneAndHer.pdf" onclick="triggerDownload(event)">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 4h14v-2H5v2z"/>
       </svg>
@@ -635,6 +635,51 @@ form.addEventListener('submit', function(e){
     showError('Network error. Please check your connection and try again.');
   });
 });
+
+// ── AUTO DOWNLOAD ──
+// Fetches PDF as a blob and forces browser download — no preview, no redirect
+var PDF_URL  = 'https://raw.githubusercontent.com/cyberrar-kia/GPL-1/main/glp1_pamphlet_hormoneandher.pdf';
+var PDF_NAME = 'GLP1_Explained_HormoneAndHer.pdf';
+
+function triggerDownload(e){
+  e.preventDefault();
+  var btn = e.currentTarget;
+  var origHTML = btn.innerHTML;
+
+  // Show loading state on button
+  btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white;animation:spin .7s linear infinite"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>&nbsp; Preparing your download...';
+  btn.style.opacity = '.8';
+  btn.style.pointerEvents = 'none';
+
+  fetch(PDF_URL)
+    .then(function(res){
+      if(!res.ok) throw new Error('fetch failed');
+      return res.blob();
+    })
+    .then(function(blob){
+      // Create a temporary object URL and click it — forces download
+      var blobUrl = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = PDF_NAME;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(blobUrl); }, 10000);
+      // Restore button
+      btn.innerHTML = origHTML;
+      btn.style.opacity = '';
+      btn.style.pointerEvents = '';
+    })
+    .catch(function(){
+      // Fallback: direct link in new tab if blob fails
+      window.open(PDF_URL, '_blank');
+      btn.innerHTML = origHTML;
+      btn.style.opacity = '';
+      btn.style.pointerEvents = '';
+    });
+}
+
 </script>
 </body>
 </html>
