@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free GLP-1 Guide — @hormoneandher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0D1B2A;
+  --navy2:#162336;
+  --coral:#C8553D;
+  --coral-light:#F5E8E5;
+  --teal:#1A7F6E;
+  --gold:#D4A843;
+  --cream:#FBF8F4;
+  --white:#FFFFFF;
+  --grey:#6B7280;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--navy);
+  color:var(--white);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* Background radial glow */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(200,85,61,.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 80%, rgba(26,127,110,.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(212,168,67,.04) 0%, transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.wrap{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:480px;
+  animation:fadeUp .6s ease both;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── HEADER ── */
+.header{text-align:center;margin-bottom:32px}
+.handle{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:18px;
+}
+.handle::before,.handle::after{
+  content:'';
+  display:block;
+  width:24px;
+  height:1px;
+  background:var(--gold);
+  opacity:.5;
+}
+.free-badge{
+  display:inline-block;
+  background:rgba(212,168,67,.15);
+  border:1px solid rgba(212,168,67,.35);
+  color:var(--gold);
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:5px 14px;
+  border-radius:50px;
+  margin-bottom:16px;
+}
+.header h1{
+  font-family:var(--serif);
+  font-size:clamp(1.8rem,5vw,2.6rem);
+  font-weight:900;
+  line-height:1.15;
+  margin-bottom:12px;
+}
+.header h1 em{
+  color:var(--coral);
+  font-style:italic;
+}
+.header p{
+  font-size:.95rem;
+  color:rgba(255,255,255,.55);
+  line-height:1.7;
+  font-weight:300;
+  max-width:380px;
+  margin:0 auto;
+}
+
+/* ── PAMPHLET PREVIEW ── */
+.preview{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-bottom:24px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.preview-icon{
+  width:52px;
+  height:66px;
+  background:linear-gradient(145deg,var(--navy2),#1a2d42);
+  border-radius:4px 8px 8px 4px;
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+}
+.preview-icon::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--coral),var(--gold));
+}
+.preview-icon span{
+  font-family:var(--serif);
+  font-size:.65rem;
+  font-weight:900;
+  color:var(--gold);
+  letter-spacing:.02em;
+}
+.preview-text strong{
+  display:block;
+  font-size:.92rem;
+  font-weight:600;
+  color:var(--white);
+  margin-bottom:4px;
+}
+.preview-text p{
+  font-size:.78rem;
+  color:rgba(255,255,255,.45);
+  line-height:1.5;
+}
+.preview-includes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:8px;
+}
+.pill{
+  font-size:.68rem;
+  font-weight:500;
+  padding:3px 10px;
+  border-radius:50px;
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.5);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+/* ── FORM CARD ── */
+.card{
+  background:var(--cream);
+  border-radius:20px;
+  padding:32px 28px;
+  color:var(--navy);
+}
+.card-label{
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--coral);
+  margin-bottom:20px;
+  display:block;
+}
+.field{margin-bottom:18px}
+.field label{
+  display:block;
+  font-size:.8rem;
+  font-weight:600;
+  color:#555;
+  margin-bottom:7px;
+  letter-spacing:.02em;
+}
+.field input,
+.field select{
+  width:100%;
+  padding:13px 16px;
+  border:1.5px solid #e5e0da;
+  border-radius:10px;
+  font-family:var(--sans);
+  font-size:.95rem;
+  color:var(--navy);
+  background:#fff;
+  outline:none;
+  transition:border-color .2s, box-shadow .2s;
+  appearance:none;
+  -webkit-appearance:none;
+}
+.field input:focus,
+.field select:focus{
+  border-color:var(--coral);
+  box-shadow:0 0 0 3px rgba(200,85,61,.12);
+}
+.field input::placeholder{color:#bbb}
+
+/* Select arrow */
+.select-wrap{position:relative}
+.select-wrap::after{
+  content:'▾';
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--grey);
+  font-size:.9rem;
+  pointer-events:none;
+}
+
+/* Gender radio buttons */
+.radio-group{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.radio-opt{
+  position:relative;
+}
+.radio-opt input[type="radio"]{
+  position:absolute;
+  opacity:0;
+  width:0;height:0;
+}
+.radio-opt label{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 8px;
+  border:1.5px solid #e5e0da;
+  border-radius:10px;
+  background:#fff;
+  font-size:.82rem;
+  font-weight:500;
+  color:#666;
+  cursor:pointer;
+  transition:all .2s;
+  text-align:center;
+  line-height:1.3;
+  margin:0;
+}
+.radio-opt input[type="radio"]:checked + label{
+  border-color:var(--coral);
+  background:var(--coral-light);
+  color:var(--coral);
+  font-weight:600;
+}
+.radio-opt label:hover{
+  border-color:#ccc;
+  background:#fafafa;
+}
+
+/* Submit button */
+.btn-submit{
+  width:100%;
+  padding:16px;
+  background:var(--coral);
+  color:#fff;
+  border:none;
+  border-radius:50px;
+  font-family:var(--sans);
+  font-size:1rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .25s;
+  margin-top:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  letter-spacing:.01em;
+}
+.btn-submit:hover{
+  background:#b8442d;
+  transform:translateY(-1px);
+  box-shadow:0 10px 30px rgba(200,85,61,.35);
+}
+.btn-submit:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+.btn-submit .spinner{
+  width:16px;height:16px;
+  border:2px solid rgba(255,255,255,.3);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  display:none;
+}
+.btn-submit.loading .spinner{display:block}
+.btn-submit.loading .btn-text{opacity:.7}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.privacy-note{
+  text-align:center;
+  font-size:.72rem;
+  color:#aaa;
+  margin-top:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+}
+.privacy-note::before{content:'🔒';font-size:.8rem}
+
+/* ── SUCCESS STATE ── */
+.success-state{
+  display:none;
+  text-align:center;
+  animation:fadeUp .5s ease both;
+}
+.success-state.visible{display:block}
+.success-icon{
+  width:64px;height:64px;
+  background:rgba(26,127,110,.15);
+  border:2px solid rgba(26,127,110,.3);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px;
+  font-size:1.8rem;
+}
+.success-state h2{
+  font-family:var(--serif);
+  font-size:1.5rem;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:8px;
+}
+.success-state p{
+  font-size:.9rem;
+  color:rgba(255,255,255,.5);
+  margin-bottom:28px;
+  line-height:1.6;
+}
+.btn-download{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--teal);
+  color:#fff;
+  padding:16px 36px;
+  border-radius:50px;
+  font-family:var(--sans);
+  font-size:1rem;
+  font-weight:700;
+  text-decoration:none;
+  transition:all .25s;
+  margin-bottom:12px;
+}
+.btn-download:hover{
+  background:#145f51;
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(26,127,110,.4);
+}
+.btn-download svg{width:18px;height:18px;fill:currentColor}
+
+/* ── ERROR ── */
+.error-msg{
+  display:none;
+  background:#fff0ee;
+  border:1px solid rgba(200,85,61,.3);
+  border-radius:8px;
+  padding:10px 14px;
+  font-size:.82rem;
+  color:var(--coral);
+  margin-top:10px;
+}
+.error-msg.visible{display:block}
+
+/* ── FOOTER ── */
+.footer{
+  text-align:center;
+  margin-top:24px;
+  font-size:.72rem;
+  color:rgba(255,255,255,.2);
+  line-height:1.7;
+}
+
+/* ── MOBILE ── */
+@media(max-width:480px){
+  .card{padding:24px 20px}
+  .radio-group{grid-template-columns:1fr 1fr}
+  .radio-group .radio-opt:last-child{grid-column:span 2}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="handle">@hormoneandher</div>
+    <div class="free-badge">Free Download · No Credit Card</div>
+    <h1>Your free <em>GLP-1</em><br>explained guide</h1>
+    <p>The fat-burning hormone your doctor never told you about — in 2 pages.</p>
+  </div>
+
+  <!-- PAMPHLET PREVIEW -->
+  <div class="preview">
+    <div class="preview-icon">
+      <span>GLP-1</span>
+    </div>
+    <div class="preview-text">
+      <strong>GLP-1 Explained — Free Pamphlet</strong>
+      <p>What it is, why it declines after 40, and how to reactivate it naturally.</p>
+      <div class="preview-includes">
+        <span class="pill">Age-decline chart</span>
+        <span class="pill">6 blockers</span>
+        <span class="pill">5 activators</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM STATE -->
+  <div class="card" id="formState">
+    <span class="card-label">Where should we send it?</span>
+
+    <form id="captureForm" novalidate>
+
+      <!-- Email -->
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email"
+               placeholder="you@example.com" required autocomplete="email">
+      </div>
+
+      <!-- Age -->
+      <div class="field">
+        <label for="age">Your age range</label>
+        <div class="select-wrap">
+          <select id="age" name="age" required>
+            <option value="" disabled selected>Select your age range</option>
+            <option value="Under 35">Under 35</option>
+            <option value="35–39">35 – 39</option>
+            <option value="40–44">40 – 44</option>
+            <option value="45–49">45 – 49</option>
+            <option value="50–54">50 – 54</option>
+            <option value="55–59">55 – 59</option>
+            <option value="60+">60 and over</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="field">
+        <label>Gender</label>
+        <div class="radio-group">
+          <div class="radio-opt">
+            <input type="radio" name="gender" id="g-female" value="Female" required>
+            <label for="g-female">Female</label>
+          </div>
+          <div class="radio-opt">
+            <input type="radio" name="gender" id="g-male" value="Male">
+            <label for="g-male">Male</label>
+          </div>
+          <div class="radio-opt">
+            <input type="radio" name="gender" id="g-other" value="Prefer not to say">
+            <label for="g-other">Prefer not<br>to say</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="error-msg" id="errorMsg">
+        Something went wrong. Please try again or check your details.
+      </div>
+
+      <button type="submit" class="btn-submit" id="submitBtn">
+        <div class="spinner"></div>
+        <span class="btn-text">Get My Free Guide →</span>
+      </button>
+
+      <div class="privacy-note">No spam. Unsubscribe anytime. Your data is safe.</div>
+
+    </form>
+  </div>
+
+  <!-- SUCCESS STATE -->
+  <div class="success-state" id="successState">
+    <div class="success-icon">✓</div>
+    <h2>Your guide is ready.</h2>
+    <p>Thank you — click below to download your free GLP-1 pamphlet instantly.</p>
+    <a href="YOUR_PDF_DOWNLOAD_URL_HERE" class="btn-download" download="GLP1_Explained_HormoneAndHer.pdf">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 4h14v-2H5v2z"/>
+      </svg>
+      Download Free Pamphlet
+    </a>
+    <div class="footer">
+      Want the full 21-day protocol?<br>
+      <a href="YOUR_LANDING_PAGE_URL_HERE" style="color:var(--gold);text-decoration:none">
+        Get The Natural GLP-1 Reset — $25 →
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" id="mainFooter">
+    @hormoneandher · hormoneandher.com<br>
+    Educational content only. Not medical advice.
+  </div>
+
+</div>
+
+<script>
+// ── FORMSPREE ENDPOINTS ──
+// Each field posts to its own form as specified
+var FS_EMAIL  = 'https://formspree.io/f/maqkppvp';
+var FS_AGE    = 'https://formspree.io/f/xlgvppza';
+var FS_GENDER = 'https://formspree.io/f/xykvnnoo';
+
+var form      = document.getElementById('captureForm');
+var submitBtn = document.getElementById('submitBtn');
+var errorMsg  = document.getElementById('errorMsg');
+var formState = document.getElementById('formState');
+var successState = document.getElementById('successState');
+var mainFooter   = document.getElementById('mainFooter');
+
+function setLoading(on){
+  submitBtn.disabled = on;
+  submitBtn.classList.toggle('loading', on);
+}
+
+function showError(msg){
+  errorMsg.textContent = msg || 'Something went wrong. Please try again.';
+  errorMsg.classList.add('visible');
+}
+
+function hideError(){
+  errorMsg.classList.remove('visible');
+}
+
+function postToFormspree(endpoint, data){
+  return fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }).then(function(res){
+    return res.json();
+  });
+}
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  hideError();
+
+  var email  = document.getElementById('email').value.trim();
+  var age    = document.getElementById('age').value;
+  var gender = document.querySelector('input[name="gender"]:checked');
+
+  // Validate
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    showError('Please enter a valid email address.');
+    document.getElementById('email').focus();
+    return;
+  }
+  if(!age){
+    showError('Please select your age range.');
+    document.getElementById('age').focus();
+    return;
+  }
+  if(!gender){
+    showError('Please select a gender option.');
+    return;
+  }
+
+  var genderVal = gender.value;
+  setLoading(true);
+
+  // Submit all three fields to their respective Formspree forms simultaneously
+  // Each form also receives the other fields for context
+  Promise.all([
+    postToFormspree(FS_EMAIL,  { email: email, age: age, gender: genderVal }),
+    postToFormspree(FS_AGE,    { age: age, email: email, gender: genderVal }),
+    postToFormspree(FS_GENDER, { gender: genderVal, email: email, age: age })
+  ])
+  .then(function(results){
+    // Check if at least the email form succeeded
+    var emailOk = results[0] && results[0].ok !== false;
+    if(emailOk || (results[0] && !results[0].errors)){
+      // Show success
+      formState.style.display = 'none';
+      mainFooter.style.display = 'none';
+      successState.classList.add('visible');
+      window.scrollTo({top:0,behavior:'smooth'});
+    } else {
+      setLoading(false);
+      showError('Submission failed. Please check your details and try again.');
+    }
+  })
+  .catch(function(err){
+    setLoading(false);
+    showError('Network error. Please check your connection and try again.');
+  });
+});
+</script>
+</body>
+</html>
